@@ -1,0 +1,94 @@
+{% set name = "TwoSampleMR" %}
+{% set version = "0.4.21" %}
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: 'r-{{ name|lower }}'
+  version: '{{ version }}'
+
+source:
+  git_url: 'https://github.com/MRCIEU/{{ name|lower }}.git'
+  git_rev: 'master'
+
+build:
+  merge_build_host: True # [win]
+  number: 0 # if new build for the same version, increment the build number.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+requirements:
+  # Other packages to be added:
+  # - r-MRInstruments
+  # - r-MendelianRandomization
+  # - r-MRPRESSO
+  # - r-mr.raps
+  # - r-RadialMR
+  # {{posix}}zip build requirement for [win]
+  build:
+    - {{ posix }}zip
+  host:
+    - r-base
+    - r-meta
+    - r-jsonlite
+    - r-rcurl
+    - r-data.table
+    - r-googleauthr (>= 0.6.2)
+    - r-httpuv
+    - r-ggplot2
+    - r-gridextra
+    - r-cowplot
+    - r-plyr
+    - r-reshape2
+    - r-stringr
+    - r-knitr
+    - r-markdown
+    - r-gtable
+    - r-rmysql
+    - r-rmarkdown
+    - r-dplyr
+    - r-igraph
+    - r-psych
+    - r-testthat
+    - r-randomforest
+  run:
+    - r-base
+    - r-meta
+    - r-jsonlite
+    - r-rcurl
+    - r-data.table
+    - r-googleauthr (>= 0.6.2)
+    - r-httpuv
+    - r-ggplot2
+    - r-gridextra
+    - r-cowplot
+    - r-plyr
+    - r-reshape2
+    - r-stringr
+    - r-knitr
+    - r-markdown
+    - r-gtable
+    - r-rmysql
+    - r-rmarkdown
+    - r-dplyr
+    - r-igraph
+    - r-psych
+    - r-testthat
+    - r-randomforest
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - '$R -e "library(''{{ name }}'')"'           # [not win]
+    - "\"%R%\" -e \"library('{{ name }}')\""      # [win]
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: 'https://github.com/MRCIEU/{{ name }}'
+  license: MIT
+  summary: 'Two Sample MR functions and interface to MR Base database.'
+  description: 'Two Sample MR functions and interface to MR Base database'

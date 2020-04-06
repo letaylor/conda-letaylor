@@ -1,0 +1,71 @@
+{% set name = "pheweb" %}
+{% set version = "1.1.14" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: https://files.pythonhosted.org/packages/ac/a6/a10e4d72560c5c1a36e43f4ee611acbb1c555fe6f55421fb9e3b7282c6d8/PheWeb-{{ version }}.tar.gz
+  sha256: dcc0167973cb42c0d4fa29182be367b5ceb07ee58cacda61822f9460cb576511
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv "
+
+requirements:
+  host:
+    - pip
+    - python
+    - pytest
+    - flake8
+    - cffi
+    - pytest-runner
+    - flask
+    - flask-compress
+    - flask-login
+    - rauth
+    - pysam
+    - marisa-trie
+    - intervaltree
+    - tqdm
+    - openpyxl
+    - scipy
+    - numpy
+    - pyopenssl
+    - cryptography
+    - idna
+    - gunicorn
+    - boltons
+    - blist
+    - wget
+    - gevent
+  run:
+    - python
+    - flake8
+    - cffi
+    - pytest-runner
+    - flask
+    - flask-compress
+    - flask-login
+    - rauth
+    - pysam
+    - marisa-trie
+    - intervaltree
+    - tqdm
+    - openpyxl
+    - scipy
+    - numpy
+    - pyopenssl
+    - cryptography
+    - idna
+    - gunicorn
+    - boltons
+    - blist
+    - wget
+    - gevent
+
+about:
+  home: https://github.com/statgen/pheweb
+  license: AGPLv3
+  summary: A tool to build multi-phenotype GWAS browsers

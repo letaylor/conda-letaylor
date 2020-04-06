@@ -1,0 +1,32 @@
+os:
+  - linux
+  - osx
+language: generic
+#sudo: required
+
+# Install the required R packages and conda dependencies
+before_install:
+  - MINICONDA_OS=$(echo ${TRAVIS_OS_NAME} | sed s/linux/Linux/ | sed s/osx/MacOSX/)
+  - if [[ "${TRAVIS_PYTHON_VERSION}" == "2.7" ]]; then
+      wget https://repo.continuum.io/miniconda/Miniconda2-latest-${MINICONDA_OS}-x86_64.sh -O miniconda.sh;
+    else
+      wget https://repo.continuum.io/miniconda/Miniconda3-latest-${MINICONDA_OS}-x86_64.sh -O miniconda.sh;
+    fi
+  - bash miniconda.sh -b -p ${HOME}/miniconda
+  - export PATH="${HOME}/miniconda/bin:${PATH}"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  - conda config --add channels letaylor
+  - conda config --add channels r
+  - conda config --add channels bioconda
+  - conda config --add channels conda-forge
+  - conda install conda-build
+  - conda install anaconda-client
+  - conda install conda-verify
+  - conda build purge-all
+
+# Build the conda packages
+# NOTE: packages listed here are ignored
+install:
+  - python scripts/make_conda_pkgs.py recipes scanpy,r-harmony,legacy-api-wrap,solo-sc,cget,phenograph,pheweb,r-arrangements,r-ff,r-hyprcoloc,r-iterpc,r-proxysnps,r-saige,r-searchable,r-twosamplemr

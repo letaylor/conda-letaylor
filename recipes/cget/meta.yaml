@@ -1,0 +1,40 @@
+{% set name = "cget" %}
+{% set version = "0.1.8" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 996d286d615fa7cad0bb9249b0450c6f0f915627d0b2f5592fb5c07ca05d74f4
+
+build:
+  number: 0
+  entry_points:
+    - cget = cget.cli:cli
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv "
+
+requirements:
+  host:
+    - python
+    - click
+    - pip
+    - six
+  run:
+    - python
+    - click
+    - six
+
+test:
+  imports:
+    - cget
+  commands:
+    - cget --help
+
+about:
+  home: https://github.com/pfultz2/cget
+  license: boost
+  license_family: OTHER
+  license_file:
+  summary: Cmake package retrieval

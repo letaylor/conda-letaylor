@@ -1,0 +1,70 @@
+{% set name = "SAIGE" %}
+{% set version = "0.35.8.3" %}
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: 'r-{{ name|lower }}'
+  version: '{{ version }}'
+
+source:
+  git_url: 'https://github.com/weizhouUMICH/{{ name|lower }}.git'
+  git_rev: 'master'
+
+build:
+  merge_build_host: True # [win]
+  number: 0 # if new build for the same version, increment the build number.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+requirements:
+  # {{posix}}zip build requirement for [win]
+  build:
+    - {{ posix }}zip
+  host:
+    - r-base
+    - r-rcpp
+    - r-rcppparallel
+    - r-rcpparmadillo
+    - r-rcppeigen
+    - r-matrix
+    - r-data.table
+    - r-spatest
+    - cget
+    - htslib
+    - xz
+    - zstd
+    - zlib
+    - bgen
+  run:
+    - r-base
+    - r-rcpp
+    - r-rcppparallel
+    - r-rcpparmadillo
+    - r-rcppeigen
+    - r-matrix
+    - r-data.table
+    - r-spatest
+    - cget
+    - htslib
+    - xz
+    - zstd
+    - zlib
+    - bgen
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - '$R -e "library(''{{ name }}'')"'           # [not win]
+    - "\"%R%\" -e \"library('{{ name }}')\""      # [win]
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: 'https://github.com/weizhouUMICH/{{ name }}'
+  license: 'GNU LESSER GENERAL PUBLIC LICENSE'
+  summary: 'Efficiently controlling for case-control imbalance and sample relatedness in single-variant assoc tests (SAIGE) and controlling for sample relatedness in region-based assoc tests in large cohorts and biobanks (SAIGE-GENE).'
+  description: 'An R package that implements the Scalable and Accurate Implementation of Generalized mixed model that uses the saddlepoint approximation (SPA)(mhof, J. P. , 1961; Kuonen, D. 1999; Dey, R. et.al 2017) and large scale optimization techniques to calibrate case-control ratios in logistic mixed model score tests (Chen, H. et al. 2016) in large PheWAS. Estimated effect sizes are provided.'

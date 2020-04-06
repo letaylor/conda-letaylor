@@ -1,0 +1,72 @@
+{% set name = "scfind" %}
+{% set version = "3.5.1" %}
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: 'r-{{ name|lower }}'
+  version: '{{ version }}'
+
+source:
+  git_url: 'https://github.com/hemberg-lab/{{ name|lower }}.git'
+  git_rev: 'master'
+
+build:
+  merge_build_host: True # [win]
+  number: 0 # if new build for the same version, increment the build number.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+requirements:
+  # Other packages to be added:
+  # - r-seurat
+  # - bioconductor-singlecellexperiment
+  # - bioconductor-biocstyle
+  # {{posix}}zip build requirement for [win]
+  build:
+    - {{ posix }}zip
+  host:
+    - r-base
+    - r-rlang
+    - r-rcpp
+    - r-rcpparmadillo
+    - r-rcppprogress
+    - r-r.methodss3
+    - r-data.table
+    - r-dt
+    - r-hash
+    - r-ggplot2
+    - r-shiny
+    - bioconductor-singlecellexperiment
+    - bioconductor-summarizedexperiment
+  run:
+    - r-base
+    - r-rlang
+    - r-rcpp
+    - r-rcpparmadillo
+    - r-rcppprogress
+    - r-r.methodss3
+    - r-data.table
+    - r-dt
+    - r-hash
+    - r-ggplot2
+    - r-shiny
+    - bioconductor-singlecellexperiment
+    - bioconductor-summarizedexperiment
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - '$R -e "library(''{{ name }}'')"'           # [not win]
+    - "\"%R%\" -e \"library('{{ name }}')\""      # [win]
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: 'https://github.com/hemberg-lab/{{ name }}'
+  license: GPL-3
+  summary: 'Scfind.'
+  description: 'Recently a very large collection of single-cell RNA-seq (scRNA-seq) datasets has been generated and publicly released. For the collection to be useful, the information must be organized in a way that supports queries that are relevant to researchers. `scfind` builds an index from scRNA-seq datasets which organizes the information in a suitable and compact manner so that the datasets can be very efficiently searched for either cells or cell types in which a given list of genes is expressed.'

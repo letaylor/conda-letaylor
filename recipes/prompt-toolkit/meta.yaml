@@ -1,0 +1,55 @@
+{% set name = "prompt-toolkit" %}
+{% set version = "2.0.9" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 2519ad1d8038fd5fc8e770362237ad0364d16a7650fb5724af6997ed5515e3c1
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - pip
+    - python
+    - six >=1.9.0
+    - wcwidth
+  run:
+    - python
+    - six >=1.9.0
+    - wcwidth
+
+test:
+  imports:
+    - prompt_toolkit
+    - prompt_toolkit.application
+    - prompt_toolkit.clipboard
+    - prompt_toolkit.completion
+    - prompt_toolkit.contrib
+    - prompt_toolkit.contrib.completers
+    - prompt_toolkit.contrib.regular_languages
+    - prompt_toolkit.contrib.telnet
+    - prompt_toolkit.eventloop
+    - prompt_toolkit.filters
+    - prompt_toolkit.formatted_text
+    - prompt_toolkit.input
+    - prompt_toolkit.key_binding
+    - prompt_toolkit.key_binding.bindings
+    - prompt_toolkit.layout
+    - prompt_toolkit.lexers
+    - prompt_toolkit.output
+    - prompt_toolkit.shortcuts
+    - prompt_toolkit.shortcuts.progress_bar
+    - prompt_toolkit.styles
+    - prompt_toolkit.widgets
+
+about:
+  home: "https://github.com/jonathanslenders/python-prompt-toolkit"
+  license: BSD
+  license_family: BSD
+  summary: "Library for building powerful interactive command lines in Python"
