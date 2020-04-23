@@ -21,12 +21,14 @@ requirements:
     - python
     - scipy
     - tqdm
+    - patsy
   run:
     - numpy
     - pandas
     - python
     - scipy
     - tqdm
+    - patsy
 
 test:
   imports:
