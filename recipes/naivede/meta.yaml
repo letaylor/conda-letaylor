@@ -6,8 +6,8 @@ package:
   version: "{{ version }}"
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 339258edcb34a5e82661ec6b1ae850bf15dc875dd4fa687bb05d0721f25bf8ad
+  git_url: 'https://github.com/Teichlab/{{ name }}.git'
+  git_rev: 'master'
 
 build:
   number: 0
