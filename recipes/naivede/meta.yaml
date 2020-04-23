@@ -22,6 +22,7 @@ requirements:
     - scipy
     - tqdm
     - patsy
+    - matplotlib
   run:
     - numpy
     - pandas
@@ -29,6 +30,7 @@ requirements:
     - scipy
     - tqdm
     - patsy
+    - matplotlib
 
 test:
   imports:
