@@ -1,0 +1,40 @@
+{% set name = "NaiveDE" %}
+{% set version = "1.2.0" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 339258edcb34a5e82661ec6b1ae850bf15dc875dd4fa687bb05d0721f25bf8ad
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - numpy
+    - pandas
+    - pip
+    - python
+    - scipy
+    - tqdm
+  run:
+    - numpy
+    - pandas
+    - python
+    - scipy
+    - tqdm
+
+test:
+  imports:
+    - NaiveDE
+
+about:
+  home: https://github.com/Teichlab/NaiveDE/tree/master/NaiveDE
+  license: MIT
+  license_family: MIT
+  license_file:
+  summary: "The most trivial DE test based on likelihood ratio tests"
