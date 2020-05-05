@@ -1,0 +1,59 @@
+{% set name = "minpy" %}
+{% set version = "0.3.4" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 9540da2987a0c20a9f9e8b426566a9fd06f3fc77a92294501a49a2827521317a
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - h5py
+    - numpy
+    - pillow
+    - pip
+    - python
+    - pyyaml
+    - scipy
+    - semantic-version
+    - six
+    - tabulate
+  run:
+    - h5py
+    - numpy
+    - pillow
+    - python
+    - pyyaml
+    - scipy
+    - semantic-version
+    - six
+    - tabulate
+
+test:
+  imports:
+    - examples
+    - examples.utils
+    - minpy
+    - minpy.array_variants
+    - minpy.array_variants.mxnet
+    - minpy.array_variants.numpy
+    - minpy.dispatch
+    - minpy.nn
+    - minpy.numpy
+    - minpy.utils
+
+about:
+  home: "https://github.com/dmlc/minpy"
+  license: UNKNOWN
+  license_family: OTHER
+  license_file:
+  summary: "Pure NumPy practice with third-party operator integration."
+  doc_url:
+  dev_url:
