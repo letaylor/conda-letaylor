@@ -19,10 +19,10 @@ build:
 # Suggests: DBI, annotate, RUnit
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.50.0'
+    - 'bioconductor-annotationdbi'
     - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.50.0'
+    - 'bioconductor-annotationdbi'
     - r-base
     - curl
 test:
