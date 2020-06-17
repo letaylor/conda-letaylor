@@ -1,0 +1,41 @@
+{% set name = "glmpca" %}
+{% set version = "0.1.0" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 02267dc81b1417235d95152a2395d928bff3b503edc5b8d364ebbd1045575118
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - pip
+    - python
+    - numpy
+    - scipy
+    - statsmodels
+  run:
+    - python
+    - numpy
+    - scipy
+    - statsmodels
+
+test:
+  imports:
+    - glmpca
+    - tests
+
+about:
+  home: "https://github.com/willtownes/glmpca-py"
+  license: "GNU Lesser General Public v3 or later (LGPLv3+)"
+  license_family: LGPL
+  license_file:
+  summary: "Generalized PCA for dimension reduction of non-normally distributed data"
+  doc_url:
+  dev_url:
