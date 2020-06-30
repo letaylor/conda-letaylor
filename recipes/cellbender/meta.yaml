@@ -24,6 +24,10 @@ requirements:
     - pandas
     - pyro-ppl
     - matplotlib
+    - sphinx
+    - sphinx-autodoc-typehints
+    - sphinxcontrib-programoutput
+    - sphinx-argparse
   run:
     - pip
     - python
@@ -34,7 +38,11 @@ requirements:
     - pandas
     - pyro-ppl
     - matplotlib
-
+    - sphinx
+    - sphinx-autodoc-typehints
+    - sphinxcontrib-programoutput
+    - sphinx-argparse
+    
 about:
   home: 'https://github.com/broadinstitute/{{ name }}'
   license: BSD3
