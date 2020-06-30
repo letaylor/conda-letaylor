@@ -1,0 +1,73 @@
+{% set name = "pyro-ppl" %}
+{% set version = "1.3.1" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: a034d9311d4715a2e8e127e0a4dd2996cbd34c4b85ac57b02b277c176b0a62ff
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - numpy >=1.7
+    - opt_einsum >=2.3.2
+    - pip
+    - pyro-api >=0.1.1
+    - python
+    - torch >=1.4.0
+    - tqdm >=4.36
+  run:
+    - numpy >=1.7
+    - opt_einsum >=2.3.2
+    - pyro-api >=0.1.1
+    - python
+    - torch >=1.4.0
+    - tqdm >=4.36
+
+test:
+  imports:
+    - pyro
+    - pyro.contrib
+    - pyro.contrib.autoname
+    - pyro.contrib.bnn
+    - pyro.contrib.cevae
+    - pyro.contrib.conjugate
+    - pyro.contrib.easyguide
+    - pyro.contrib.examples
+    - pyro.contrib.forecast
+    - pyro.contrib.gp
+    - pyro.contrib.gp.kernels
+    - pyro.contrib.gp.likelihoods
+    - pyro.contrib.gp.models
+    - pyro.contrib.oed
+    - pyro.contrib.oed.glmm
+    - pyro.contrib.timeseries
+    - pyro.contrib.tracking
+    - pyro.distributions
+    - pyro.distributions.testing
+    - pyro.distributions.transforms
+    - pyro.infer
+    - pyro.infer.autoguide
+    - pyro.infer.mcmc
+    - pyro.infer.reparam
+    - pyro.nn
+    - pyro.ops
+    - pyro.ops.einsum
+    - pyro.optim
+    - pyro.params
+    - pyro.poutine
+
+about:
+  home: "http://pyro.ai"
+  license: Apache 2.0
+  license_family: APACHE
+  license_file:
+  summary: "A Python library for probabilistic modeling and inference"
+  doc_url:
+  dev_url:
