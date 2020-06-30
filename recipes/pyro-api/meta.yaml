@@ -1,0 +1,38 @@
+{% set name = "pyro-api" %}
+{% set version = "0.1.2" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: a1b900d9580aa1c2fab3b123ab7ff33413744da7c5f440bd4aadc4d40d14d920
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - python
+
+test:
+  imports:
+    - pyroapi
+    - pyroapi.tests
+  requires:
+    - flake8
+    - pytest >=4.1
+
+about:
+  home: "https://github.com/pyro-ppl/pyro-api"
+  license: Apache Software
+  license_family: APACHE
+  license_file:
+  summary: "Generic API for dispatch to Pyro backends."
+  doc_url:
+  dev_url:
