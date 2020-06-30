@@ -20,22 +20,20 @@ requirements:
     - numpy
     - scipy
     - scikit-learn
-    - tables
+    - pytables
     - pandas
     - pyro-ppl
     - matplotlib
-    - sphinx
   run:
     - pip
     - python
     - numpy
     - scipy
     - scikit-learn
-    - tables
+    - pytables
     - pandas
     - pyro-ppl
     - matplotlib
-    - sphinx
 
 about:
   home: 'https://github.com/broadinstitute/{{ name }}'
