@@ -1,0 +1,43 @@
+{% set name = "CellBender" %}
+{% set version = "0.1" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  git_url: 'https://github.com/broadinstitute/{{ name }}.git'
+  git_rev: 'master'
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - pip
+    - python
+    - numpy
+    - scipy
+    - scikit-learn
+    - tables
+    - pandas
+    - pyro-ppl
+    - matplotlib
+    - sphinx
+  run:
+    - pip
+    - python
+    - numpy
+    - scipy
+    - scikit-learn
+    - tables
+    - pandas
+    - pyro-ppl
+    - matplotlib
+    - sphinx
+
+about:
+  home: 'https://github.com/broadinstitute/{{ name }}'
+  license: BSD3
+  summary: CellBender is a software package for eliminating technical artifacts from high-throughput single-cell RNA sequencing (scRNA-seq) data.
