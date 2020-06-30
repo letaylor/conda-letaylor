@@ -20,14 +20,14 @@ requirements:
     - pip
     - pyro-api >=0.1.1
     - python
-    - torch >=1.4.0
+    - pytorch >=1.4.0
     - tqdm >=4.36
   run:
     - numpy >=1.7
     - opt_einsum >=2.3.2
     - pyro-api >=0.1.1
     - python
-    - torch >=1.4.0
+    - pytorch >=1.4.0
     - tqdm >=4.36
 
 test:
