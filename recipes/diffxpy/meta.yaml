@@ -1,0 +1,50 @@
+{% set name = "diffxpy" %}
+{% set version = "0.7.4" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 68c793cdd3e8854d2272ae74451bacc5a1b8fd6b020f08f21dbb310d6fa2bf85
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - batchglm >=0.7.4
+    - numpy >=1.16.4
+    - pandas
+    - patsy >=0.5.0
+    - pip
+    - python
+    - scipy >=1.2.1
+    - statsmodels
+  run:
+    - batchglm >=0.7.4
+    - numpy >=1.16.4
+    - pandas
+    - patsy >=0.5.0
+    - python
+    - scipy >=1.2.1
+    - statsmodels
+
+test:
+  imports:
+    - diffxpy
+    - diffxpy.api
+    - diffxpy.enrichment
+    - diffxpy.fit
+    - diffxpy.stats
+    - diffxpy.testing
+    - diffxpy.unit_test
+
+about:
+  home: The package home page
+  license: UNKNOWN
+  license_family: OTHER
+  license_file:
+  summary: "Fast and scalable differential expression analysis on single-cell RNA-seq data"
