@@ -25,6 +25,7 @@ requirements:
     - scipy >=1.2.1
     - sparse
     - toolz
+    - tensorflow-gpu
   run:
     - anndata
     - dask
@@ -35,6 +36,7 @@ requirements:
     - scipy >=1.2.1
     - sparse
     - toolz
+    - tensorflow-gpu
 
 test:
   imports:
