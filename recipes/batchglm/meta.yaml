@@ -26,6 +26,8 @@ requirements:
     - sparse
     - toolz
     - tensorflow-gpu
+    - matplotlib
+    - seaborn
   run:
     - anndata
     - dask
@@ -37,6 +39,8 @@ requirements:
     - sparse
     - toolz
     - tensorflow-gpu
+    - matplotlib
+    - seaborn
 
 test:
   imports:
@@ -45,7 +49,6 @@ test:
     - batchglm.api.models
     - batchglm.api.models.numpy
     - batchglm.api.models.tf1
-    - batchglm.api.models.tf2
     - batchglm.api.utils
     - batchglm.models
     - batchglm.models.base
