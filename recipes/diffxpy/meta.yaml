@@ -43,8 +43,6 @@ test:
     - diffxpy.unit_test
 
 about:
-  home: The package home page
-  license: UNKNOWN
-  license_family: OTHER
-  license_file:
+  home: https://github.com/theislab/diffxpy
+  license: BSD-3
   summary: "Fast and scalable differential expression analysis on single-cell RNA-seq data"

@@ -1,0 +1,71 @@
+{% set name = "batchglm" %}
+{% set version = "0.7.4" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 89da770c83eb778346fab7b4d784eef23564119cf79e13d0afe5050af6a9be2c
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - anndata
+    - dask
+    - numpy >=1.16.4
+    - pandas
+    - patsy
+    - pip
+    - python
+    - scipy >=1.2.1
+    - sparse
+    - toolz
+  run:
+    - anndata
+    - dask
+    - numpy >=1.16.4
+    - pandas
+    - patsy
+    - python
+    - scipy >=1.2.1
+    - sparse
+    - toolz
+
+test:
+  imports:
+    - batchglm
+    - batchglm.api
+    - batchglm.api.models
+    - batchglm.api.models.numpy
+    - batchglm.api.models.tf1
+    - batchglm.api.models.tf2
+    - batchglm.api.utils
+    - batchglm.models
+    - batchglm.models.base
+    - batchglm.models.base_glm
+    - batchglm.models.glm_beta
+    - batchglm.models.glm_nb
+    - batchglm.models.glm_norm
+    - batchglm.train
+    - batchglm.train.numpy
+    - batchglm.train.numpy.base_glm
+    - batchglm.train.numpy.glm_nb
+    - batchglm.train.tf1
+    - batchglm.train.tf1.base
+    - batchglm.train.tf1.base_glm
+    - batchglm.train.tf1.base_glm_all
+    - batchglm.train.tf1.glm_beta
+    - batchglm.train.tf1.glm_nb
+    - batchglm.train.tf1.glm_norm
+    - batchglm.unit_test
+    - batchglm.utils
+
+about:
+  home: https://github.com/theislab/batchglm
+  license: BSD-3
+  summary: "Fast and scalable fitting of over-determined generalized-linear models (GLMs)"
