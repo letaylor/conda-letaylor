@@ -11,50 +11,32 @@ source:
 
 build:
   number: 0
+  noarch: python
   entry_points:
     - scanpy=scanpy.cli:console_main
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: "{{ PYTHON }} -m pip install . --ignore-installed --no-deps -vv"
 
 requirements:
   host:
-    - anndata >=0.7
-    - h5py >=2.10.0
-    - importlib_metadata >=0.7
-    - joblib
-    - legacy-api-wrap
-    - matplotlib >=3.1.2
-    - natsort
-    - networkx
-    - numba >=0.41.0
-    - packaging
-    - pandas >=0.21
-    - patsy
-    - pip
-    - python
-    - scikit-learn >=0.21.2
-    - scipy >=1.4
-    - seaborn
+    - python >=3.6
     - setuptools_scm
-    - statsmodels >=0.10.0rc2
-    - pytables
-    - tqdm
-    - umap-learn >=0.3.10
+    - pip
   run:
     - anndata >=0.7
     - h5py >=2.10.0
     - importlib_metadata >=0.7
     - joblib
     - legacy-api-wrap
-    - matplotlib >=3.1.2
+    - matplotlib-base >=3.1.2
     - natsort
     - networkx
     - numba >=0.41.0
     - packaging
     - pandas >=0.21
     - patsy
-    - python
+    - python >=3.6
     - scikit-learn >=0.21.2
-    - scipy >=1.4
+    - scipy >=1.3
     - seaborn
     - setuptools_scm
     - statsmodels >=0.10.0rc2
@@ -82,7 +64,12 @@ test:
     - scanpy --help
 
 about:
-  home: "http://github.com/theislab/scanpy"
-  license: BSD3
+  home: https://scanpy.readthedocs.io/en/latest/
+  dev_url: http://github.com/theislab/scanpy
+  license: BSD-3
   license_family: BSD
-  summary: "Single-Cell Analysis in Python."
+  summary: Single-Cell Analysis in Python. Scales to >1M cells.
+
+extra:
+  identifiers:
+    - doi:10.1186/s13059-017-1382-0
