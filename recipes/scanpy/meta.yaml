@@ -47,19 +47,6 @@ requirements:
 test:
   imports:
     - scanpy
-    - scanpy.api
-    - scanpy.datasets
-    - scanpy.external
-    - scanpy.external.pp
-    - scanpy.external.tl
-    - scanpy.neighbors
-    - scanpy.plotting
-    - scanpy.plotting._tools
-    - scanpy.preprocessing
-    - scanpy.preprocessing._deprecated
-    - scanpy.queries
-    - scanpy.sim_models
-    - scanpy.tools
   commands:
     - scanpy --help
 
