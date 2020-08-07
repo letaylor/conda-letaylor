@@ -29,4 +29,4 @@ before_install:
 # Build the conda packages
 # NOTE: packages listed here are ignored
 install:
-  - python scripts/make_conda_pkgs.py recipes cellbender,batchglm,scanpy,pyro-ppl,pyro-api,glmpca,bioconductor-org.Hs.eg.db,r-scfind,prompt-toolkit,minpy,scfind,harmonypy,naivede,r-harmony,legacy-api-wrap,solo-sc,cget,phenograph,pheweb,r-arrangements,r-ff,r-hyprcoloc,r-iterpc,r-proxysnps,r-saige,r-searchable,r-twosamplemr
+  - python scripts/make_conda_pkgs.py recipes diffxpy,cellbender,batchglm,scanpy,pyro-ppl,pyro-api,glmpca,bioconductor-org.Hs.eg.db,r-scfind,prompt-toolkit,minpy,scfind,harmonypy,naivede,r-harmony,legacy-api-wrap,solo-sc,cget,phenograph,pheweb,r-arrangements,r-ff,r-hyprcoloc,r-iterpc,r-proxysnps,r-saige,r-searchable,r-twosamplemr
